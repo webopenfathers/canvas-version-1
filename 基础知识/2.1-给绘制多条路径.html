@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <canvas style="border: 1px solid #aaa;display: block;margin: 50px auto;" id="canvas">
+    当前浏览器不支持Canvas,请更换浏览器后再试
+  </canvas>
+
+</body>
+<script>
+  let canvas = document.getElementById('canvas')
+
+  canvas.width = 1024
+  canvas.height = 768
+
+  // JS中判断当前浏览器是否支持Canvas
+  if (canvas.getContext('2d')) {
+    let context = canvas.getContext('2d')
+
+    // 使用context绘制
+    console.log(context);
+
+    // 第一条路径
+    // 绘制状态--顺序的用lineTo连接起来就可以绘制多边形
+    context.beginPath()  // 开始一段新的路径
+    context.moveTo(100, 100) // 绘制起点
+    context.lineTo(700, 700) // 接着上面的继续画
+    context.lineTo(100, 700) // 接着上面的继续画
+    context.lineTo(100, 100) // 接着上面的继续画
+    context.closePath()  // 结束一段新的路径并只会在之后的stroke起作用
+    // 绘制状态--------------
+
+    context.lineWidth = 5 // 绘制线条宽度
+    context.strokeStyle = 'red' // 线条样式(主要指颜色)
+    context.stroke()     // 此方法用于绘制线条
+
+
+
+    // 第二条路径
+    context.beginPath()  // 开始一段新的路径
+    context.moveTo(200, 100) // 绘制起点
+    context.lineTo(700, 600) // 接着上面的继续画
+    context.closePath()  // 结束一段新的路径并只会在之后的stroke起作用
+
+    context.strokeStyle = 'black' // 线条样式(主要指颜色)
+    context.stroke()     // 此方法用于绘制线条
+
+
+  } else {
+    alert('当前浏览器不支持Canvas,请更换浏览器后再试')
+  }
+
+</script>
+
+</html>
+<!--
+  注：定义一个路径
+  context.moveTo(x,y)
+  context.lineTo(x,y)
+
+  定义多个路径分开处理
+  context.beginPath()
+  context.closePath()
+ -->

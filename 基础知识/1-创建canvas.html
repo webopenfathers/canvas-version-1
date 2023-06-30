@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 注：只有用户的浏览器不支持Canvas时，标签内部的元素才会显示 -->
+  <canvas style="border: 1px solid #aaa;display: block;margin: 50px auto;" id="canvas">
+    当前浏览器不支持Canvas,请更换浏览器后再试
+  </canvas>
+
+</body>
+<script>
+  let canvas = document.getElementById('canvas')
+
+  canvas.width = 1024
+  canvas.height = 768
+
+  // JS中判断当前浏览器是否支持Canvas
+  if (canvas.getContext('2d')) {
+    let context = canvas.getContext('2d')
+
+    // 使用context绘制
+    console.log(context);
+
+  } else {
+    alert('当前浏览器不支持Canvas,请更换浏览器后再试')
+  }
+
+</script>
+
+</html>
+<!--
+  canvas总结
+
+  canvas.width
+  canvas.height
+  canvas.getContext('2d')
+
+ -->

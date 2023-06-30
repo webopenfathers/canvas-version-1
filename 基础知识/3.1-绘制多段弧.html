@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 注：只有用户的浏览器不支持Canvas时，标签内部的元素才会显示 -->
+  <canvas style="border: 1px solid #aaa;display: block;margin: 50px auto;" id="canvas">
+    当前浏览器不支持Canvas,请更换浏览器后再试
+  </canvas>
+
+</body>
+<script>
+  window.onload = function () {
+    let canvas = document.getElementById('canvas')
+
+    canvas.width = 1024
+    canvas.height = 768
+
+    let context = canvas.getContext('2d')
+
+    // 使用context绘制
+    context.lineWidth = 5
+    context.strokeStyle = '#005588'
+
+
+    // 1.顺时针
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i + 1) / 10)
+
+      // 注：closePath
+      // 当绘制的状态路径不是封闭路径时，如果使用了closePath，则closePath会自动将不封闭的路径首尾使用一条线段连接起来
+      context.closePath()
+      // 绘制多段弧
+
+
+      context.stroke()
+    }
+
+
+
+    // 2.顺时针---不使用closePath
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 180, 40, 0, 2 * Math.PI * (i + 1) / 10)
+      // 绘制多段弧
+
+      context.stroke()
+    }
+
+
+    // 3.逆时针
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 300, 40, 0, 2 * Math.PI * (i + 1) / 10, true)
+      context.closePath()
+      // 绘制多段弧
+
+
+      context.stroke()
+    }
+
+
+
+    // 4.逆时针---不使用closePath
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 420, 40, 0, 2 * Math.PI * (i + 1) / 10, true)
+      // 绘制多段弧
+
+
+      context.stroke()
+    }
+
+
+
+    // 5.填充色操作
+    context.fillStyle = "#005588"
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 540, 40, 0, 2 * Math.PI * (i + 1) / 10)
+      context.closePath()
+      // 绘制多段弧
+
+
+      // 填充色
+      context.fill()
+    }
+
+
+    // 6.填充色操作----不使用closePath
+    context.fillStyle = "#005588"
+    for (let i = 0; i < 10; i++) {
+      // 绘制多段弧
+      context.beginPath()
+      context.arc(50 + i * 100, 660, 40, 0, 2 * Math.PI * (i + 1) / 10)
+      // 绘制多段弧
+
+
+      // 填充色
+      context.fill() // 是否使用closePath对fill方法是无效的，fill会自动把没有封闭的路径首尾相连之后填充
+    }
+
+
+
+  }
+
+</script>
+
+</html>
+<!--
+  canvas总结
+
+  canvas.width
+  canvas.height
+  canvas.getContext('2d')
+
+ -->
